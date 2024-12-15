@@ -18,10 +18,15 @@ const vuetify = createVuetify({
   directives,
 })
 
+// v-mask
+import { VueMaskDirective } from 'v-mask';
+
 const app = createApp(App)
 
 app.use(createPinia())
 app.use(vuetify)
 app.use(router)
+
+app.directive('mask', VueMaskDirective);
 
 app.mount('#app')
