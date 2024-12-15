@@ -15,7 +15,7 @@
                     <a class="nav-link active" aria-current="page" href="#usuarios">USUARIOS</a>
                   </li>
                   <li class="nav-item item-inicio">
-                    <a class="nav-link" href="#informacion">INFORMACIÓN</a>
+                    <a class="nav-link" href="#shows">SHOWS</a>
                   </li>
                   <li class="nav-item item-inicio">
                     <a class="nav-link" href="#eventos">EVENTOS</a>
@@ -28,8 +28,8 @@
                   </li>
                 </ul>
 
-                <form class="d-flex ms-auto">
-                    <SwitchTriple></SwitchTriple>
+                <form class="d-flex ms-auto" @updateEstado="cambiarEstado">
+                    <SwitchTriple :estado="estado" />
                 </form>
                 
 
@@ -41,7 +41,12 @@
 
     <!--USUARIOS-->
     <section class="custom-background" id="usuarios">
-        <GestionUser style></GestionUser> 
+        <GestionUser></GestionUser> 
+    </section>
+
+    <!--SHOWS-->
+    <section id="shows">
+        <PlantillaShows></PlantillaShows> 
     </section>
     
 
@@ -53,31 +58,11 @@
     
     import SwitchTriple from '../components/SwitchTriple.vue';
     import GestionUser from '../components/GestionUser.vue';
+    import PlantillaShows from '../components/PlantillaShows.vue'
+import LandingView from './landingView.vue';
 
     const perfil = ref('Mabel')
 
-    
-    const horaDelIni1 = ref ('10:30')
-    const horaDelFin1 = ref ('11.15')
-    const horaDelIni2 = ref ('3:00')
-    const horaDelFin2 = ref ('3.45')
-    const costoDelShow = ref ('$120')
-    const costoDelIntN = ref ('$1200')
-    const costoDelIntA = ref ('$1500')
-
-    const horaLobIni1 = ref ('11:30')
-    const horaLobFin1 = ref ('12.15')
-    const horaLobIni2 = ref ('3:50')
-    const horaLobFin2 = ref ('4.35')
-    const costoLobShow = ref ('$100')
-    const costoLobIntN = ref ('$1000')
-    const costoLobIntA = ref ('$1300')
-
-    const horaPayIni1 = ref ('9:30')
-    const horaPayFin1 = ref ('10.15')
-    const horaPayIni2 = ref ('4:00')
-    const horaPayFin2 = ref ('4.45')
-    const costoPayShow = ref ('$120')
 
 </script>
 <style scoped>

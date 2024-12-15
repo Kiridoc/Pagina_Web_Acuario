@@ -95,160 +95,73 @@
     </section>
 
     <!--SHOWS-->
-    <section id="shows" class="info">
-      <div class="container-fluid px-5 mx5-5 info" style="align-items: center;">
-        <h1 style="text-align: center; color: #EBE9F6">SHOWS</h1>
-        <div class="row py-3">
-          
-          <!--Shows de delfines-->
-          <div class="col-12 col-xl-4 py-4 d-flex justify-content-center">
-            <div class="card parent-card custom-card border-primary" style="width: 28rem;">
-              <img src="../assets/img/fondo.jpg" class="card-img-top shows-fotos" alt="...">
-              <div class="card-body">
-                <h5 class="card-title"><strong>Show de Delfines</strong></h5>
-                <p class="card-text">¡Ven a ver a nuestros delfines hacer magia en el agua!</p>
-                <div class="d-flex justify-content-center">
+<section id="shows" class="info">
+  <div class="container-fluid px-5 mx-5 info" style="align-items: center;">
+    <h1 style="text-align: center; color: #EBE9F6">SHOWS</h1>
+    <div class="row py-3">
+      
+      <!-- Bucle para cada show -->
+      <div 
+        v-for="show in shows" 
+        :key="show.id" 
+        class="col-12 col-xl-4 py-4 d-flex justify-content-center"
+      >
+        <div class="card parent-card custom-card border-primary" style="width: 28rem;">
+          <img :src="show.image" class="card-img-top shows-fotos" alt="Imagen del show">
+          <div class="card-body">
+            <h5 class="card-title"><strong>{{ show.title }}</strong></h5>
+            <p class="card-text">{{ show.description }}</p>
+            <div class="d-flex justify-content-center">
+              <div class="container">
+                <div class="row">
 
-                  <div class="container">
-                    <div class="row">
-                      
-                      <!--Show de delfines de la mañana-->
-                      <div class="col-12 col-md-6 d-flex justify-content-center">
-                        <div class="card custom-card border-info my-2" style="max-width: 18rem; min-width: 10rem;">
-                          <div class="card-header fw-bold fs-5">Show de la mañana<br><span class="estado-show-no-disponible">(NO DISPONIBLE)</span></div>
-                          <div class="card-body">
-                            <p class="card-text"><strong>Horario:</strong> 10:30 - 11:15 <br>
-                            <strong>Ubicación:</strong> Delfinario <br>
-                            <strong>Costo:</strong> $120 <br>
-                            <hr>
-                            <strong>Interacción:</strong> <br>
-                            $1200 por niño <br> $1500 por adulto</p>
-                          </div>
-                        </div>
+                  <!-- Bucle para cada horario del show -->
+                  <div 
+                    v-for="(schedule, index) in show.schedules" 
+                    :key="index" 
+                    class="col-12 col-md-6 d-flex justify-content-center"
+                  >
+                    <div class="card custom-card border-info my-2" style="max-width: 18rem; min-width: 10rem;">
+                      <div 
+                        class="card-header fw-bold fs-5">
+                        {{ schedule.name }}
+                        <br>
+                        <span 
+                          :class="{
+                            'estado-show-disponible': schedule.available,
+                            'estado-show-no-disponible': !schedule.available
+                          }"
+                        >
+                          ({{ schedule.available ? 'DISPONIBLE' : 'NO DISPONIBLE' }})
+                        </span>
                       </div>
-
-                      <!--Show de delfines de la tarde-->
-                      <div class="col-12 col-md-6 d-flex justify-content-center">
-                        <div class="card custom-card border-info my-2" style="max-width: 18rem; min-width: 10rem;">
-                          <div class="card-header fw-bold fs-5">Show de la tarde<br><span class="estado-show-disponible">(DISPONIBLE)</span></div>
-                          <div class="card-body">
-                            <p class="card-text"><strong>Horario:</strong> 3:00 - 3:45 <br>
-                            <strong>Ubicación:</strong> Delfinario <br>
-                            <strong>Costo:</strong> $120 <br>
-                            <hr>
-                            <strong>Interacción:</strong> <br>
-                            $1200 por niño <br> $1500 por adulto</p>
-                          </div>
-                        </div>
+                      <div class="card-body">
+                        <p class="card-text">
+                          <strong>Horario:</strong> {{ schedule.time }} <br>
+                          <strong>Ubicación:</strong> {{ schedule.location }} <br>
+                          <strong>Costo:</strong> {{ schedule.cost }} <br>
+                          <hr>
+                          <strong v-if="schedule.interactionCost.child || schedule.interactionCost.adult">Interacción:</strong>
+                          <span v-if="schedule.interactionCost.child"> {{ schedule.interactionCost.child }} por niño <br> </span>
+                          <span v-if="schedule.interactionCost.adult"> {{ schedule.interactionCost.adult }} por adulto </span>
+                        </p>
                       </div>
-
                     </div>
                   </div>
-
+                  <!-- Fin del bucle de horarios -->
+                  
                 </div>
               </div>
             </div>
           </div>
-
-          <!--Shows de lobos-->
-          <div class="col-12 col-xl-4 py-4 d-flex justify-content-center">
-            <div class="card parent-card custom-card border-primary" style="width: 28rem;">
-              <img src="../assets/img/fondo.jpg" class="card-img-top shows-fotos" alt="...">
-              <div class="card-body">
-                <h5 class="card-title"><strong>Show de Lobos Marinos</strong></h5>
-                <p class="card-text">¡Los lobos marinos están listos para hacerte reir y sorprenderte!</p>
-                <div class="d-flex justify-content-center">
-
-                  <div class="container">
-                    <div class="row">
-                      
-                      <!--Show de lobos de la mañana-->
-                      <div class="col-12 col-md-6 d-flex justify-content-center">
-                        <div class="card custom-card border-info my-2" style="max-width: 18rem; min-width: 10rem;">
-                          <div class="card-header fw-bold fs-5">Show de la mañana<br><span class="estado-show-disponible">(DISPONIBLE)</span></div>
-                          <div class="card-body">
-                            <p class="card-text"><strong>Horario:</strong> 11:30 - 12:15 <br>
-                            <strong>Ubicación:</strong> Lobario <br>
-                            <strong>Costo:</strong> $100 <br>
-                            <hr>
-                            <strong>Interacción:</strong> <br>
-                            $1000 por niño <br> $1300 por adulto</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!--Show de lobos de la tarde-->
-                      <div class="col-12 col-md-6 d-flex justify-content-center">
-                        <div class="card custom-card border-info my-2" style="max-width: 18rem; min-width: 10rem;">
-                          <div class="card-header fw-bold fs-5">Show de la tarde<br><span class="estado-show-disponible">(DISPONIBLE)</span></div>
-                          <div class="card-body">
-                            <p class="card-text"><strong>Horario:</strong> 3:50 - 4:35 <br>
-                            <strong>Ubicación:</strong> Lobario <br>
-                            <strong>Costo:</strong> $100 <br>
-                            <hr>
-                            <strong>Interacción:</strong> <br>
-                            $1000 por niño <br> $1300 por adulto</p>
-                          </div>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!--Shows de Payasos-->
-          <div class="col-12 col-xl-4 py-4 d-flex justify-content-center">
-            <div class="card parent-card custom-card border-primary" style="width: 28rem;">
-              <img src="../assets/img/fondo.jpg" class="card-img-top shows-fotos" alt="...">
-              <div class="card-body">
-                <h5 class="card-title"><strong>Show de Payasos y Magos</strong></h5>
-                <p class="card-text">¡Diversión para toda la familia!</p>
-                <div class="d-flex justify-content-center">
-
-                  <div class="container">
-                    <div class="row">
-                      
-                      <!--Show de payasos de la mañana-->
-                      <div class="col-12 col-md-6 d-flex justify-content-center">
-                        <div class="card custom-card border-info my-2" style="max-width: 18rem; min-width: 10rem;">
-                          <div class="card-header fw-bold fs-5">Show de la mañana<br><span class="estado-show-disponible">(DISPONIBLE)</span></div>
-                          <div class="card-body">
-                            <p class="card-text"><strong>Horario:</strong> 9:30 - 10:15 <br>
-                            <strong>Ubicación:</strong> Lobario <br>
-                            <strong>Costo:</strong> $120 <br>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!--Show de payasos de la tarde-->
-                      <div class="col-12 col-md-6 d-flex justify-content-center">
-                        <div class="card custom-card border-info my-2" style="max-width: 18rem; min-width: 10rem;">
-                          <div class="card-header fw-bold fs-5">Show de la tarde<br><span class="estado-show-no-disponible">(NO DISPONIBLE)</span></div>
-                          <div class="card-body">
-                            <p class="card-text"><strong>Horario:</strong> 4:00 - 4:45 <br>
-                            <strong>Ubicación:</strong> Lobario <br>
-                            <strong>Costo:</strong> $120 <br>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
-    </section>
+      <!-- Fin del bucle de shows -->
+
+    </div>
+  </div>
+</section>
+
 
     <!--INFORMACION-->
     <section id="informacion" class="info">
@@ -566,6 +479,15 @@
     import 'bootstrap/dist/css/bootstrap.css'
     import 'bootstrap/dist/js/bootstrap.js'
     import { ref, computed, onMounted } from 'vue'
+    import { useShowsStore } from '../stores/adminStore.js';
+    import { useEstadoStore } from '../stores/adminStore.js';
+
+    const estadoStore = useEstadoStore();
+    const showStore = useShowsStore();
+
+    const shows = showStore.shows; // Obtén los datos del store
+    console.log(shows);
+
 
     // Variable reactiva para el estado de disponibilidad
 const disponible = ref(false)
@@ -579,7 +501,7 @@ const verificarDisponibilidad = () => {
 
   // Definir horario de disponibilidad (por ejemplo, lunes a viernes, 9:00 AM a 6:00 PM)
   const horarioLaboral = {
-    diasValidos: [2, 3, 4, 5, 6], // Lunes a Viernes
+    diasValidos: [2, 3, 4, 5, 6], // Martes a Sábado
     horaInicio: 9,
     horaFin: 18
   }
@@ -598,9 +520,13 @@ const verificarDisponibilidad = () => {
 
 // Computed property para el mensaje de disponibilidad
 const mensajeDisponibilidad = computed(() => {
-  if (disponible.value) {
+  if (estadoStore.estado === 0) {
     return '🟢 Abierto - 9:00 AM - 6:00 PM'
-  } else {
+  }else if (estadoStore.estado === 1){
+    return disponible.value
+    ? '🟢 Abierto - 9:00 AM - 6:00 PM'
+    : '🔴 Cerrado - 9:00 AM - 6:00 PM'
+  }else{
     return '🔴 Cerrado - 9:00 AM - 6:00 PM'
   }
 })
