@@ -7,6 +7,12 @@
     <span>Público</span>
   </v-btn>
 
+  <v-btn value="main" to="/loginView">
+    <v-icon>mdi-history</v-icon>
+
+    <span>Login</span>
+  </v-btn>
+
   <v-btn value="gestion" to="/adminView">
     <v-icon>mdi-heart</v-icon>
 

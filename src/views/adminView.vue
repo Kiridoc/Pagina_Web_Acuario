@@ -21,7 +21,7 @@
                     <a class="nav-link" href="#eventos">EVENTOS</a>
                   </li>
                   <li class="nav-item item-inicio">
-                    <a class="nav-link" href="#guia">GUÍA</a>
+                    <a class="nav-link" href="#preguntas">PREGUNTAS</a>
                   </li>
                   <li class="nav-item item-inicio">
                     <a class="nav-link" href="#reservas" tabindex="-1" aria-disabled="true">RESERVAS</a>
@@ -48,6 +48,16 @@
     <section id="shows">
         <PlantillaShows></PlantillaShows> 
     </section>
+
+    <!--EVENTOS-->
+    <section id="eventos">
+        <PlantillaEventos></PlantillaEventos> 
+    </section>
+
+    <!--PREGUNTAS-->
+    <section id="preguntas">
+        <PlantillaPreguntas></PlantillaPreguntas> 
+    </section>
     
 
 </template>
@@ -59,7 +69,8 @@
     import SwitchTriple from '../components/SwitchTriple.vue';
     import GestionUser from '../components/GestionUser.vue';
     import PlantillaShows from '../components/PlantillaShows.vue'
-import LandingView from './landingView.vue';
+    import PlantillaEventos from '../components/PlantillaEventos.vue'
+    import PlantillaPreguntas from '../components/PlantillaPreguntas.vue'
 
     const perfil = ref('Mabel')
 

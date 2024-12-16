@@ -1,6 +1,6 @@
 <template>
     <section id="manage-shows" class="info">
-      <div class="container-fluid px-5 mx-5 info" style="align-items: center;">
+      <div class="container-fluid px-5 info" style="align-items: center;">
         <h1 style="text-align: center; color: #EBE9F6">Gestión de Shows</h1>
         <div class="row py-3">
   

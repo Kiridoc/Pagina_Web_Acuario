@@ -96,7 +96,7 @@
 
     <!--SHOWS-->
 <section id="shows" class="info">
-  <div class="container-fluid px-5 mx-5 info" style="align-items: center;">
+  <div class="container-fluid px-5  info" style="align-items: center;">
     <h1 style="text-align: center; color: #EBE9F6">SHOWS</h1>
     <div class="row py-3">
       
@@ -204,114 +204,49 @@
     </div>
     </section>
 
-    <!--EVENTOS-->
-    <section id="eventos">
-      <div class="container px-5 mx5-5 info" style="background-color: #EBE9F6;">
-        <h1 style="text-align: center; color: #EBE9F6; margin-bottom: 40px;">EVENTOS</h1>
-        
-        <div class="row">
+    <!-- EVENTOS -->
+  <section id="eventos">
+    <div class="container px-5  info" style="background-color: #EBE9F6;">
+      <h1 style="text-align: center; color: #494365; margin-bottom: 40px; color: #fff;">EVENTOS</h1>
 
-          <!--Evento 1-->
-          <div class="col-12 col-sm-6 col-lg-3">
-            
-            <div class="rotar-card mb-3">
-
-              <div class="face front">
-                <img src="../assets/img/evento-corales.jpg" alt="">
-                <h3>Siembra de Corales</h3>
-              </div>
-        
-              <div class="face back">
-                <h3>Taller de siembra de corales</h3>
-                <p>Curso interactivo para los niños donde van a poder ver a loss biólogos trabajando
-                  en el proyecto de restauración de arrecifes coralinos.
-                </p>
-                <div class="fecha">
-                    <p>11/12/2024</p>
-                </div>
-              </div>
-        
+      <div class="row">
+        <!-- Renderizar cada evento dinámicamente -->
+        <div
+          v-for="(evento, index) in mostrarEventos"
+          :key="index"
+          class="col-12 col-sm-6 col-lg-3"
+        >
+          <div class="rotar-card mb-3">
+            <!-- Tarjeta Frontal -->
+            <div class="face front" :class="{ 'relleno': !evento }">
+              <template v-if="evento">
+                <img :src="evento.imagen || imagenDefault" :alt="evento.nombre || 'Próximamente'" />
+                <h3>{{ evento.nombre || 'Próximamente' }}</h3>
+              </template>
+              <template v-else>
+                <h3>Próximamente</h3>
+              </template>
             </div>
 
-          </div>
-
-          <!--Evento 2-->
-          <div class="col-12 col-sm-6 col-lg-3">
-            
-            <div class="rotar-card mb-3">
-
-              <div class="face front">
-                <img src="../assets/img/evento-buceo.jpg" alt="">
-                <h3>Introducción Buceo</h3>
-              </div>
-        
-              <div class="face back">
-                <h3>Introducción Buceo</h3>
-                <p>Curso introductorio para los niños donde aprenderán las nociones básicas 
-                  del buceo junto a nuestros buzos y biólogos.
-                </p>
+            <!-- Tarjeta Trasera -->
+            <div class="face back" :class="{ 'relleno': !evento }">
+              <template v-if="evento">
+                <h3>{{ evento.titulo || 'Próximamente' }}</h3>
+                <p>{{ evento.descripcion || 'Más información muy pronto.' }}</p>
                 <div class="fecha">
-                    <p>20/5/2025</p>
+                  <p>{{ formatFecha(evento.fecha) }}</p>
                 </div>
-              </div>
-        
+              </template>
+              <template v-else>
+                <h3>Próximamente</h3>
+                <p>Más información muy pronto.</p>
+              </template>
             </div>
-
           </div>
-
-          <!--Evento 3-->
-          <div class="col-12 col-sm-6 col-lg-3">
-
-            <div class="rotar-card mb-3">
-
-              <div class="face front">
-                <img src="../assets/img/evento-origami.jpg" alt="">
-                <h3>Origami y Naturaleza</h3>
-              </div>
-        
-              <div class="face back">
-                <h3>Origami y Naturaleza</h3>
-                <p>Taller para todo el público, únanse a nostros para descubrir 
-                  la historia detrás del arte de la papiroflexia y su relación con 
-                  la naturaleza.
-                </p>
-                <div class="fecha">
-                    <p>20/1/2025</p>
-                </div>
-              </div>
-        
-            </div>
-
-          </div>
-
-          <!--Evento 4-->
-          <div class="col-12 col-sm-6 col-lg-3">
-            
-            <div class="rotar-card mb-3">
-
-              <div class="face front">
-                <img src="../assets/img/evento-biodiversidad.jpg" alt="">
-                <h3>Biodiversidad Marina</h3>
-              </div>
-        
-              <div class="face back">
-                <h3>Biodiversidad Marina</h3>
-                <p>Recorrido para niños donde aprenderán sobre las diferentes 
-                  especies encontradas en el Acuario Nacional de Cuba.
-                </p>
-                <div class="fecha">
-                    <p>12/2/2024</p>
-                </div>
-              </div>
-        
-            </div>
-
-          </div>
-
         </div>
-
       </div>
-    </section>
+    </div>
+  </section>
 
     <!--GUÍA-->
     <section id="guia">
@@ -349,94 +284,53 @@
 
 <!-- PREGUNTAS Y RESPUESTAS -->
 <section class="preguntas">
-  <div class="container info">
-    <h1 class="text-center my-5 pb-3" style="color: #EBE9F6;">PREGUNTAS FRECUENTES</h1>
+    <div class="container info">
+      <h1 class="text-center my-5 pb-3" style="color: #EBE9F6;">PREGUNTAS FRECUENTES</h1>
 
-    <div class="accordion accordion-dark mx-5" id="accordionPanelsStayOpenExample">
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
-            ¿Dónde está ubicado el Acuario Nacional de Cuba?
-          </button>
-        </h2>
-        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionPanelsStayOpenExample">
-          <div class="accordion-body">
-            <strong>El Acuario Nacional de Cuba se encuentra en la provincia de La Habana, municipio Playa, calle 3ra entre 60 y 62.</strong>
+      <!-- Accordion -->
+      <div class="accordion accordion-dark mx-5" id="accordionPanelsStayOpenExample">
+        <div 
+          class="accordion-item" 
+          v-for="(pregunta, index) in preguntas" 
+          :key="index"
+        >
+          <h2 class="accordion-header">
+            <button 
+              class="accordion-button collapsed" 
+              type="button" 
+              :data-bs-toggle="'collapse'" 
+              :data-bs-target="'#panelsStayOpen-collapse' + index" 
+              :aria-controls="'panelsStayOpen-collapse' + index" 
+              aria-expanded="false"
+            >
+              {{ pregunta.pregunta }}
+            </button>
+          </h2>
+          <div 
+            :id="'panelsStayOpen-collapse' + index" 
+            class="accordion-collapse collapse" 
+            data-bs-parent="#accordionPanelsStayOpenExample"
+          >
+            <div class="accordion-body">
+              <strong>{{ pregunta.respuesta }}</strong>
+            </div>
           </div>
         </div>
       </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-            ¿Cuánto cuesta la entrada al centro?
-          </button>
-        </h2>
-        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionPanelsStayOpenExample">
-          <div class="accordion-body">
-            <strong>El precio del boleto de entrada al centro es de <span>$50 para los adultos</span> y <span>$25 para los niños</span>. Los menores de 5 años no pagan entrada.</strong>
-          </div>
+
+      <!-- Extra content -->
+      <div class="row mt-5 px-5">
+        <div class="col-12 col-md-8 d-flex justify-content-center">
+          <h2 style="color: #EBE9F6; text-align: center;">Si tu pregunta no aparece, puedes dejarla en nuestro buzón.</h2>
         </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-            ¿Qué es la interacción con mamíferos marinos?
-          </button>
-        </h2>
-        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionPanelsStayOpenExample">
-          <div class="accordion-body">
-            <strong>La interacción con mamíferos marinos es un servicio adicional que es posible adquirir en el <span>buró de información</span> junto a la entrada. Dicho servicio se realiza <span>justo después del show</span> y permite pasar a la plataforma del delfinario o lobario junto al entrenador para poder tocar, acariciar y sacarse fotos con los animales <span>(con sus propios teléfonos o cámaras)</span>.</strong>
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
-            ¿A partir de qué edad se puede hacer la interacción?
-          </button>
-        </h2>
-        <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionPanelsStayOpenExample">
-          <div class="accordion-body">
-            <strong>La interacción puede realizarla <span>cualquier visitante mayor a 5 años</span>. Los menores de 5 años no pagan interacción, <span>no pueden tocar a los animales</span> ya que podrían hacerles daño tocándoles los ojos y vías respiratorias. Si algún adulto realiza la interacción y toma fotos, puede llevar al menor de 5 años para que salga en la foto.</strong>
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
-            ¿Hasta qué edad se considera niño a un visitante?
-          </button>
-        </h2>
-        <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionPanelsStayOpenExample">
-          <div class="accordion-body">
-            <strong>Se considera niño a cualquier visitante cuya edad esté comprendida <span>entre 5 y 12 años</span>. Los mayores de 12 y menores de 18 años, a pesar de ser menores de edad, pagan precios como adultos.</strong>
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseSix">
-            ¿Si necesito ayuda o indicaciones en la instalación, a quién debo dirigirme?
-          </button>
-        </h2>
-        <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionPanelsStayOpenExample">
-          <div class="accordion-body">
-            <strong>Nuestro centro cuenta con <span>técnicos capacitados</span> para atender sus necesidades e inquietudes. Puede encontrarlos en el <span>buró de información</span> junto a la entrada principal.</strong>
-          </div>
+        <div class="col-12 col-md-4 d-flex justify-content-center">
+          <router-link to="/preguntaView" class="text-center">
+            <a class="btn btn-reserva" style="min-width: 14rem; max-height: 50px;"><span>Buzón</span></a>
+          </router-link>
         </div>
       </div>
     </div>
-
-    <div class="row mt-5 px-5">
-      <div class="col-12 col-md-8 d-flex justify-content-center">
-        <h2 style="color: #EBE9F6; text-align: center;">Si tu pregunta no aparece, puedes dejarla en nuestro buzón.</h2>
-      </div>
-      <div class="col-12 col-md-4 d-flex justify-content-center">
-        <a class="btn btn-reserva" href="#" style="min-width: 14rem; max-height: 50px;"><span>Buzón</span></a>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
 <!--RESERVAS-->
 <section id="reservas">
@@ -452,9 +346,11 @@
               <p class="card-text" style="font-size: 30px;">
                   No pierdas la oportunidad de soñar en el Acuario Nacional de Cuba. ¡Haz tu reserva hoy mismo y disfruta de una experiencia única en el Caribe! Visita nuestras instalaciones y conoce la increíble biodiversidad marina.
               </p>
-              <div class="text-center"> <!-- Alinea el botón a la derecha -->
-                  <a href="" class="btn btn-reserva"><span>Reservar Ahora</span></a>
+
+              <div class="text-center">
+                <a class="btn btn-reserva"><span>Reservar Ahora</span></a>
               </div>
+
           </div>
       </div>        
   </div>
@@ -481,12 +377,37 @@
     import { ref, computed, onMounted } from 'vue'
     import { useShowsStore } from '../stores/adminStore.js';
     import { useEstadoStore } from '../stores/adminStore.js';
+    import { useEventosStore } from '../stores/adminStore.js';
+    import { usePreguntasStore } from '../stores/adminStore.js';
+
+    import imagenDefault from "../assets/img/fondo.jpg"; // Imagen predeterminada
 
     const estadoStore = useEstadoStore();
-    const showStore = useShowsStore();
 
+    const preguntasStore = usePreguntasStore();
+    const preguntas = computed(() => preguntasStore.preguntas)
+
+    const eventosStore = useEventosStore();
+    const eventos = computed(() => eventosStore.eventos)
+
+    // Calcular siempre un arreglo de 4 elementos (rellenando con null si no hay suficientes eventos)
+    const mostrarEventos = computed(() => {
+      const eventosDisponibles = eventos.value.slice(0, 4); // Máximo 4 eventos reales
+      const relleno = Array(4 - eventosDisponibles.length).fill(null); // Crear cartas de relleno
+      return [...eventosDisponibles, ...relleno]; // Combinar eventos reales y cartas de relleno
+    });
+
+    // Método para formatear fechas
+    const formatFecha = (fecha) => {
+      if (!fecha) return "Sin fecha definida";
+      const opciones = { year: "numeric", month: "long", day: "numeric" };
+      return new Date(fecha).toLocaleDateString("es-ES", opciones);
+    };
+
+    const showStore = useShowsStore();
     const shows = showStore.shows; // Obtén los datos del store
     console.log(shows);
+
 
 
     // Variable reactiva para el estado de disponibilidad

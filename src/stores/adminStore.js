@@ -5,6 +5,11 @@ import showLoboImg from '../assets/img/showLobo.jpg';
 import showDelfinImg from '../assets/img/showDelfin.jpg';
 import showPayasosYMagos from '../assets/img/showPayaso.jpg';
 
+import eventoCorales from '../assets/img/evento-corales.jpg';
+import eventoBuceo from '../assets/img/evento-buceo.jpg';
+import eventoOrigami from '../assets/img/evento-origami.jpg';
+import eventoBiodiversidad from '../assets/img/evento-biodiversidad.jpg';
+
 //ABIERTO_CERRADO_AUTO
 export const useEstadoStore = defineStore('estado', {
   state: () => ({
@@ -16,6 +21,136 @@ export const useEstadoStore = defineStore('estado', {
     },
   },
 });
+
+//EVENTOS
+export const useEventosStore = defineStore('eventos', {
+  state: () => ({
+    eventos: [
+      { 
+        nombre: "Siembra de Corales", 
+        titulo: "Restauración de Arrecifes", 
+        descripcion: "Participa en la siembra de corales para restaurar los arrecifes dañados.", 
+        fecha: "2024-12-11", 
+        imagen: eventoCorales
+      },
+      { 
+        nombre: "Introducción Buceo", 
+        titulo: "Curso de Buceo", 
+        descripcion: "Aprende los conceptos básicos del buceo en un ambiente seguro.", 
+        fecha: "2025-05-20", 
+        imagen: eventoBuceo 
+      },
+      { 
+        nombre: "Origami y Naturaleza", 
+        titulo: "Taller de Origami", 
+        descripcion: "Explora el arte del origami inspirado en la naturaleza.", 
+        fecha: "2025-01-20", 
+        imagen: eventoOrigami
+      },
+      { 
+        nombre: "Biodiversidad Marina", 
+        titulo: "Seminario", 
+        descripcion: "Un seminario sobre la biodiversidad marina y su importancia.", 
+        fecha: "2024-02-12", 
+        imagen: eventoBiodiversidad
+      },
+    ], // Los eventos predefinidos.
+  }),
+  actions: {
+    setEventos(nuevosEventos) {
+      this.eventos = nuevosEventos;
+    },
+    agregarEvento(evento) {
+      this.eventos.push(evento);
+    },
+    eliminarEvento(index) {
+      this.eventos.splice(index, 1);
+    },
+    eliminarTodos() {
+      this.eventos = [];
+    },
+    actualizarImagen(index, nuevaImagen) {
+      if (this.eventos[index]) {
+        this.eventos[index].imagen = nuevaImagen;
+      }
+    },
+  },
+});
+
+//PREGUNTAS
+export const usePreguntasStore = defineStore('preguntas', {
+  state: () => ({
+    preguntas: [
+      { 
+        pregunta: "¿Dónde está ubicado el Acuario Nacional de Cuba?", 
+        respuesta: "El Acuario Nacional de Cuba se encuentra en la provincia de La Habana, municipio Playa, calle 3ra entre 60 y 62.", 
+      },
+      { 
+        pregunta: "¿Cuánto cuesta la entrada al centro?", 
+        respuesta: "El precio del boleto de entrada al centro es de $50 para los adultos y $25 para los niños. Los menores de 5 años no pagan entrada.", 
+      },
+      { 
+        pregunta: "¿Qué es la interacción con mamíferos marinos?", 
+        respuesta: "La interacción con mamíferos marinos es un servicio adicional que es posible adquirir en el buró de información junto a la entrada. Dicho servicio se realiza justo después del show y permite pasar a la plataforma del delfinario o lobario junto al entrenador para poder tocar, acariciar y sacarse fotos con los animales (con sus propios teléfonos o cámaras).", 
+      },
+      { 
+        pregunta: "¿A partir de qué edad se puede hacer la interacción?", 
+        respuesta: "La interacción puede realizarla cualquier visitante mayor a 5 años. Los menores de 5 años no pagan interacción, no pueden tocar a los animales ya que podrían hacerles daño tocándoles los ojos y vías respiratorias. Si algún adulto realiza la interacción y toma fotos, puede llevar al menor de 5 años para que salga en la foto.", 
+      },
+      { 
+        pregunta: "¿Hasta qué edad se considera niño a un visitante?", 
+        respuesta: "Se considera niño a cualquier visitante cuya edad esté comprendida entre 5 y 12 años. Los mayores de 12 y menores de 18 años, a pesar de ser menores de edad, pagan precios como adultos.", 
+      },
+      { 
+        pregunta: "¿Si necesito ayuda o indicaciones en la instalación, a quién debo dirigirme?", 
+        respuesta: "Nuestro centro cuenta con técnicos capacitados para atender sus necesidades e inquietudes. Puede encontrarlos en el buró de información junto a la entrada principal.", 
+      },
+    ], // Las preguntas predefinidas.
+  }),
+  actions: {
+    setPreguntas(nuevosPreguntas) {
+      this.preguntas = nuevasPreguntas;
+    },
+    agregarPregunta(pregunta) {
+      this.preguntas.push(pregunta);
+    },
+    eliminarPregunta(index) {
+      this.preguntas.splice(index, 1);
+    },
+  },
+});
+
+//USUARIOS
+export const useUsuariosStore = defineStore('usuarios', {
+  state: () => ({
+    usuarios: [
+      { name: 'Angelita', phone: '58693703', password: '1234' },
+      { name: 'Santa', phone: '569911123', password: '1234' },
+    ],
+  }),
+  actions: {
+    addUser(user) {
+      if (!this.usuarios.some(existingUser => existingUser.name === user.name)) {
+        this.usuarios.push(user);
+      } else {
+        alert("El usuario ya existe.");
+      }
+    },
+    deleteUser(userToDelete) {
+      const index = this.usuarios.findIndex(user => user.name === userToDelete.name);
+      if (index !== -1) {
+        this.usuarios.splice(index, 1); // Usando splice para mantener reactividad
+      }
+    },
+    findUserByName(name) {
+      return this.usuarios.find(user => user.name === name);
+    }
+  }
+});
+
+
+
+
 
 //SHOWS
 export const useShowsStore = defineStore('shows', {
@@ -94,7 +229,6 @@ export const useShowsStore = defineStore('shows', {
             ]
 
       }
-      // Otros shows...
     ],
   }),
   actions: {
