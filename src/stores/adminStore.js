@@ -77,6 +77,31 @@ export const useEventosStore = defineStore('eventos', {
   },
 });
 
+//BUZÓN
+export const useCorreosStore = defineStore('correos', {
+  state: () => ({
+    correos: [
+      { id: 1, correo: "usuario1@example.com", pregunta: "¿Cuáles son los horarios del acuario?" },
+      { id: 2, correo: "usuario2@example.com", pregunta: "¿Hay espectáculos con delfines?" },
+      { id: 3, correo: "usuario3@example.com", pregunta: "¿El acuario está abierto los domingos?" },
+      { id: 4, correo: "usuario4@example.com", pregunta: "¿Tienen descuento para grupos?" },
+    ], // Los correos con preguntas por defecto.
+  }),
+  actions: {
+    agregarCorreo(nuevoCorreo) {
+      this.correos.push(nuevoCorreo);
+    },
+    eliminarCorreo(index) {
+      this.correos.splice(index, 1);
+    },
+    setCorreos(nuevosCorreos) {
+      this.correos = nuevosCorreos;
+    },
+  },
+});
+
+
+
 //PREGUNTAS
 export const usePreguntasStore = defineStore('preguntas', {
   state: () => ({

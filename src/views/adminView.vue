@@ -58,7 +58,20 @@
     <section id="preguntas">
         <PlantillaPreguntas></PlantillaPreguntas> 
     </section>
+
+    <!--BUZÓN-->
+    <section id="preguntas">
+        <CorreoGestion></CorreoGestion> 
+    </section>
     
+    <!--FOOTER-->
+    <footer class="info">
+    <p class="m-2" style="text-align: center; color: #EBE9F6  ;">Todos los derechos reservados - 2024</p>
+    <div class="redes" style="text-align: center;">
+        <a href="#"><img src="../assets/img/icons8-facebook-50.png" alt="" height="30" class="img-redes"></a>
+        <a href="#"><img src="../assets/img/icons8-instagram-52.png" alt="" height="30" class="img-redes"></a>
+    </div>
+    </footer>
 
 </template>
 <script setup>
@@ -71,12 +84,19 @@
     import PlantillaShows from '../components/PlantillaShows.vue'
     import PlantillaEventos from '../components/PlantillaEventos.vue'
     import PlantillaPreguntas from '../components/PlantillaPreguntas.vue'
+    import CorreoGestion from '../components/CorreoGestion.vue'
 
     const perfil = ref('Mabel')
 
 
 </script>
 <style scoped>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+      *{
+        box-sizing: border-box;
+        font-family: 'Roboto';
+      }
+
     .custom-navbar{
         background-color: #080A77;
     }

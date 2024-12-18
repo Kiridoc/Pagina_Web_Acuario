@@ -1,10 +1,10 @@
 <template>
   <section id="manage-event" class="info">
-    <div class="container-fluid px-5 mx-5">
+    <div class="container-fluid px-4 mx-auto">
       <h1 class="text-center" style="color: #EBE9F6; margin-top: 50px;">
         Administración de Eventos
       </h1>
-      <div class="row justify-content-center d-flex">
+      <div class="row justify-content-center">
         <!-- Tabla unificada con eventos y detalles -->
         <div class="col-12 d-flex flex-column align-items-center">
           <div class="table-container table-responsive">
@@ -168,5 +168,90 @@ export default {
 </script>
 
 <style scoped>
-/* Tus estilos aquí, sin cambios */
+
+
+.container-fluid {
+  max-width: 1200px; /* Limitar el ancho máximo para pantallas grandes */
+  margin: 0 auto; /* Centrar el contenedor */
+}
+
+h1 {
+  text-align: center;
+  color: #EBE9F6; /* Título en blanco */
+  margin-bottom: 20px;
+}
+
+/* Estilo para la tabla de eventos con bordes curvados */
+.table-container {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: auto; /* Para hacer la tabla desplazable en dispositivos móviles */
+  padding-right: 15px; /* Ajuste en el relleno para pantallas pequeñas */
+}
+
+.table-lg {
+  font-size: 1.2em; /* Tamaño de la fuente más grande */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-blue {
+  border: 2px solid blue; /* Borde azul solo en el exterior */
+  border-radius: 10px; /* Bordes redondeados en la tabla */
+}
+
+table td,
+table th {
+  border: 1px solid transparent; /* No aplicar borde interno a las celdas */
+}
+
+.evento-row:hover {
+  cursor: pointer;
+  background-color: #f1f1f1;
+}
+
+.evento-row.selected {
+  background-color: #d0ebff;
+}
+
+.highlighted {
+  border-bottom: 2px solid darkorange;
+}
+
+.buttons button {
+  margin: 5px;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: white;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .container-fluid {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .table-container {
+    padding-right: 0; /* Sin relleno extra en pantallas móviles */
+  }
+
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto; /* Permite el desplazamiento horizontal */
+  }
+
+  .table td,
+  .table th {
+    font-size: 0.9em; /* Reducir el tamaño de la fuente en pantallas pequeñas */
+  }
+}
 </style>

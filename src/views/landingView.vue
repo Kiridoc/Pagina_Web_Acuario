@@ -61,16 +61,16 @@
                             </div>
                             <div class="carousel-inner">
                             <div class="carousel-item active" data-bs-interval="10000">
-                                <img src="../assets/img/fondo.jpg" class="d-block w-100" alt="...">
+                                <img src="../assets/img/home1.jpg" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
                                 <h5 style="color: #EBE9F6; font-size: 2rem;">¡BIENVENIDO!</h5>
                                 </div>
                             </div>
                             <div class="carousel-item" data-bs-interval="2000">
-                                <img src="../assets/img/fondo.jpg" class="d-block w-100" alt="...">
+                                <img src="../assets/img/home2.jpg" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="../assets/img/fondo.jpg" class="d-block w-100" alt="...">
+                                <img src="../assets/img/home3.jpg" class="d-block w-100" alt="...">
                             </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
@@ -334,29 +334,28 @@
 
 <!--RESERVAS-->
 <section id="reservas">
+  <div class="container-fluid">
+    <div class="row m-5 border-0 align-items-center">
+        <div class="col-md-6 text-center">
+            <img src="../assets/img/reserva.avif" class="img-fluid img-bordeadas" alt="..."> <!-- Añadido 'rounded' para bordes curvos -->
+        </div>
+        <div class="col-md-6" style="color: #EBE9F6;">
+            <div class="card-body">
+                <h2 class="card-title">Reserva tu Local</h2>
+                <p class="card-text">
+                    No pierdas la oportunidad de soñar en el Acuario Nacional de Cuba. ¡Haz tu reserva hoy mismo y disfruta de una experiencia única en el Caribe! Visita nuestras instalaciones y conoce la increíble biodiversidad marina.
+                </p>
 
-<div class="container-fluid">
-  <div class="row m-5 border-0 align-items-center">
-      <div class="col-md-6 text-center">
-          <img src="../assets/img/reserva.avif" class="img-fluid img-bordeadas" alt="..."> <!-- Añadido 'rounded' para bordes curvos -->
-      </div>
-      <div class="col-md-6" style="color: #EBE9F6;">
-          <div class="card-body">
-              <h2 class="card-title" style="font-size: 50px;">Reserva tu Local</h2>
-              <p class="card-text" style="font-size: 30px;">
-                  No pierdas la oportunidad de soñar en el Acuario Nacional de Cuba. ¡Haz tu reserva hoy mismo y disfruta de una experiencia única en el Caribe! Visita nuestras instalaciones y conoce la increíble biodiversidad marina.
-              </p>
+                <div class="text-center">
+                  <a class="btn btn-reserva"><span>Reservar Ahora</span></a>
+                </div>
 
-              <div class="text-center">
-                <a class="btn btn-reserva"><span>Reservar Ahora</span></a>
-              </div>
-
-          </div>
-      </div>        
+            </div>
+        </div>        
+    </div>
   </div>
-</div>
-
 </section>
+
 
 <!--FOOTER-->
 <footer class="info">
@@ -420,9 +419,9 @@ const verificarDisponibilidad = () => {
   const minutos = ahora.getMinutes()
   const diaSemana = ahora.getDay()
 
-  // Definir horario de disponibilidad (por ejemplo, lunes a viernes, 9:00 AM a 6:00 PM)
+  // Definir horario de disponibilidad (por ejemplo, martes a sábado, 9:00 AM a 6:00 PM)
   const horarioLaboral = {
-    diasValidos: [2, 3, 4, 5, 6], // Martes a Sábado
+    diasValidos: [3, 4, 5, 6, 7], // Martes a Sábado
     horaInicio: 9,
     horaFin: 18
   }
@@ -916,15 +915,23 @@ const getClass = (index) => {
   color: white; /* Color de texto del cuerpo */ 
 }
 
-#reservas{
+#reservas {
   background: linear-gradient(rgba(31, 31, 31, 0.7), rgba(31, 31, 31, 0.7)), url('../assets/img/reserva.avif');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 50px 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 50px 0;
 }
 
-.btn-reserva{
+#reservas .card-title {
+  font-size: 50px; /* Título grande */
+}
+
+#reservas .card-text {
+  font-size: 30px; /* Texto descriptivo */
+}
+
+.btn-reserva {
   color: #f3f3f3;
   font-size: 20px;
   border: solid 1px #fff;
@@ -934,7 +941,7 @@ const getClass = (index) => {
   overflow: hidden;
 }
 
-.btn-reserva::before{
+.btn-reserva::before {
   content: '';
   position: absolute;
   top: 0;
@@ -952,6 +959,44 @@ const getClass = (index) => {
   position: relative; /* Asegura que el contenido del botón esté por encima */ 
   color: #fff;
 }
+
+/* Media Query para pantallas pequeñas (móviles y tablets) */
+@media (max-width: 768px) {
+  #reservas .row {
+    margin: 20px 0; /* Ajustar márgenes para pantallas más pequeñas */
+  }
+
+  #reservas .col-md-6 {
+    text-align: center; /* Centrar el contenido en pantallas pequeñas */
+  }
+
+  #reservas .card-title {
+    font-size: 35px; /* Reducir tamaño de fuente en móviles */
+  }
+
+  #reservas .card-text {
+    font-size: 18px; /* Reducir tamaño de fuente en móviles */
+  }
+
+  .btn-reserva {
+    font-size: 18px; /* Reducir tamaño del texto del botón */
+    padding: 10px 20px; /* Ajustar el tamaño del botón */
+  }
+
+  .btn-reserva span {
+    font-size: 16px; /* Ajustar el tamaño del texto dentro del botón */
+  }
+
+  .img-fluid {
+    max-width: 100%; /* Asegurar que la imagen no se desborde en pantallas pequeñas */
+    height: auto;
+  }
+
+  #reservas {
+    padding: 30px 0; /* Reducir el padding en pantallas pequeñas */
+  }
+}
+
 
 .img-bordeadas{
   border: solid 5px #F8C51C;
